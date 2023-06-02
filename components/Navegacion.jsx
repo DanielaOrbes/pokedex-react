@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { PokemonContext } from '../context/PokemonContext';
-import logo from '../public/img/PokeLogo' //Revisar logo
 
 export const Navegacion = () => {
 	const { onInputChange, valueSearch, onResetForm } =
@@ -50,7 +49,7 @@ export const Navegacion = () => {
 							id=''
 							value={valueSearch}
 							onChange={onInputChange}
-							placeholder='Buscar nombre de pokemon'
+							placeholder='Buscar Pókemon'
 						/>
 					</div>
 
