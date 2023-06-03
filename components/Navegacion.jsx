@@ -14,7 +14,7 @@ export const Navegacion = () => {
 			state: valueSearch,
 		});
 
-		onResetForm();
+		onResetForm();//limpia el input de form 
 	};
 
 	return (

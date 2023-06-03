@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useForm } from '../hook/useForm';
+import { userForm } from '../hooks/userForm';
 import { PokemonContext } from './PokemonContext';
 
 export const PokemonProvider = ({ children }) => {
@@ -8,7 +8,7 @@ export const PokemonProvider = ({ children }) => {
   const [offset, setOffset] = useState(0); //los pokemons inician en 0 y van hasta limit (50)
 
 
-  const {valueSearch, onInputChange, onResetForm} = useForm({
+  const {valueSearch, onInputChange, onResetForm} = userForm({
     valueSearch : ''
   })
 
@@ -39,8 +39,7 @@ export const PokemonProvider = ({ children }) => {
   }
 
   //pokemons global
-  //pokemons global
-const getGlobalPokemons = async() => { // Agrega el operador de flecha (=>) aqu√≠
+const getGlobalPokemons = async() => { 
   const baseURL = 'https://pokeapi.co/api/v2/';
 
   const res = await fetch(
@@ -72,8 +71,8 @@ const getGlobalPokemons = async() => { // Agrega el operador de flecha (=>) aqu√
 
 
   useEffect(() => {
-    getAllPokemons() //no le paso nada por parametro y tomar√° el valor de limit(50)
-  }, [])
+    getAllPokemons()  
+  }, [offset])
 
 
   useEffect(() => {
@@ -97,3 +96,6 @@ const getGlobalPokemons = async() => { // Agrega el operador de flecha (=>) aqu√
     </PokemonContext.Provider>
   );
 }
+
+
+
