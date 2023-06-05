@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { userForm } from '../hooks/userForm';
 import { PokemonContext } from './PokemonContext';
 
+
 export const PokemonProvider = ({ children }) => {
   const [allPokemons, setAllPokemons] = useState([]);
   const [globalPokemons, setGlobalPokemons] = useState([]);
@@ -57,7 +58,6 @@ const getGlobalPokemons = async() => {
   setLoading(false)
   }
 
-
   //search pokemon ID
 
   const getPokemonById = async(id) => {
@@ -79,7 +79,23 @@ const getGlobalPokemons = async() => {
     getGlobalPokemons()
   }, [])
   
+  //btn pokeMAS
+  const onClickLoadMore = () => {
+    setOffset(offset + 50);
+  }
 
+  const [typeSelected, setTypeSelected] = useState({
+    fire: false,
+		water: false,
+		electric: false,
+		psychic: false,
+		ice: false,
+		dragon: false,
+		dark: false,
+		fairy: false,
+		unknow: false,
+		shadow: false,
+  })
 
 
   return (
@@ -91,6 +107,10 @@ const getGlobalPokemons = async() => {
       allPokemons,
       globalPokemons,
       getPokemonById,
+      onClickLoadMore,
+      loading,
+      active,
+      setActive,
         }}>
       {children}
     </PokemonContext.Provider>
