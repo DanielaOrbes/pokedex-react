@@ -95,7 +95,36 @@ const getGlobalPokemons = async() => {
 		fairy: false,
 		unknow: false,
 		shadow: false,
+    flying: false,
+		poison: false,
+		ground: false,
+		rock: false,
+		bug: false,
+		ghost: false,
+		steel: false,
+    grass: false,
+		normal: false,
+		fighting: false, 
   })
+  const [filteredPokemons, setfilteredPokemons] = useState([])
+  const handlerCheckbox = e => {
+    setTypeSelected({
+    ...typeSelected,
+      [e.target.name]: e.target.checked
+    })
+    if (e.target.checked) {
+      const filteredResults = globalPokemons.filter(pokemon => pokemon.types 
+        .map(type => type.type.name)
+        .includes(e.target.name))
+        setFilterPokemons(...filteredResults, pokemon)
+    } else {
+      const filteredResults = filteredPokemons.filter(pokemon => !pokemon.types 
+        .map(type => type.type.name)
+        .includes(e.target.name))
+        setfilteredPokemons(...filteredResults)
+    }
+  }
+  
 
 
   return (
@@ -111,6 +140,8 @@ const getGlobalPokemons = async() => {
       loading,
       active,
       setActive,
+      handlerCheckbox,
+      filteredPokemons
         }}>
       {children}
     </PokemonContext.Provider>
